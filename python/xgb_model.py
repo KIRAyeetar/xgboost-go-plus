@@ -52,8 +52,6 @@ save_xgb_feature_map(train.loc[:, ["sl", "sw", "pl", "pw"]].columns, "fmap.map")
 # 保存模型文件至redis
 with open('iris_xgboost_dump.json') as f:
     model_json = json.load(f)
-redis_conf = '/data/config/rcmd-mart/rcmd_config.toml'
-
 # 你的json配置
 rd = redis.StrictRedis("...")
 rd.set("xgb_model_test", str(json.dumps(model_json)), ex=3600)
